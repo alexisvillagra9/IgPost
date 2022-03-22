@@ -44,6 +44,7 @@ export const scrap = async () => {
 export const getPostByHashtagHelper = async (hashtag: string) => {
   try {
     const rawPost = await getPostByHashtagService(hashtag);
+    console.log(JSON.stringify(rawPost))
     const postEdges: any[] =
       rawPost.graphql.hashtag.edge_hashtag_to_media.edges;
     const pPosts = postEdges.map(async (edge: any) => {

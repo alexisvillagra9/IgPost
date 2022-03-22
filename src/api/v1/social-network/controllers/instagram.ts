@@ -5,7 +5,7 @@ export const getPostByHashtagController = async (
   req: Request,
   res: Response
 ) => {
-  console.log("ALL REQ", req);
+  // console.log("ALL REQ", req);
   const {
     params: { hashtag },
   } = req;
