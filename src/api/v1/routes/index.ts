@@ -18,19 +18,15 @@ const addRoutes = (base: string, childrenPaths: string[]) => {
         if (file.includes("index")) return;
 
         const pathApiFile = path.join(
-          pathJoin.replace("src\\", ""),
+          pathJoin.replace("src", ""),
           file.split(".").slice(0, -1).join(".")
         );
-        const fileRoute = path.join(
-          "..",
-          pathApiFile.replace("api\\", "").substring(2)
-        );
+        const fileRoute = path.join("..", "..", "..", pathApiFile);
 
         const fileRouteExp = require(fileRoute);
-        const pathApi = `/${pathApiFile
-          .replace("routes", "")
-          .replace("\\\\", "\\")
-          .replace(/\\/g, "/")}`;
+        const pathApi = `${path.join(
+          pathApiFile.replace("routes", "").replace(/\\/g, "/")
+        )}`;
 
         routesDir.use(pathApi, fileRouteExp);
         console.log("RUTAS CARGADA ---->", pathApi);

@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  igpost-microservice:
+    container_name: igpost-microservice
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    ports:
+      - 3008:3008

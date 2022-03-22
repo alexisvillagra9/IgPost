@@ -6,10 +6,10 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install
 COPY . ./
-RUN npm install typescript pm2 -g
+RUN npm install typescript nodemon -g
 RUN npm run build
 
 # start app
 EXPOSE 3008
 
-CMD ["pm2-runtime", "build", "./dist/index.js"]
+CMD ["npm", "run", "dev"]
