@@ -12,6 +12,7 @@ export const getPostByHashtagController = async (
     const response = await getPostByHashtagHelper(hashtag);
     res.json(response);
   } catch (error) {
+    console.log(error)
     res.status(400).json(error);
   }
 };
