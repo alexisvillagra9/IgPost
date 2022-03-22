@@ -1,0 +1,36 @@
+node_modules
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+.eslintcache
+package-lock.json
+
+# Optional stylelint cache
+.stylelintcache
+.env.dev
+.env.test
+.env.prod
+.cache
+.parcel-cache
+.eslintcache
+.eslintrc.json
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+yarn.lock
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
