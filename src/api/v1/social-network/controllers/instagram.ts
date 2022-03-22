@@ -5,6 +5,7 @@ export const getPostByHashtagController = async (
   req: Request,
   res: Response
 ) => {
+  console.log("ALL REQ", req);
   const {
     params: { hashtag },
   } = req;
@@ -12,7 +13,7 @@ export const getPostByHashtagController = async (
     const response = await getPostByHashtagHelper(hashtag);
     res.json(response);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(400).json(error);
   }
 };
