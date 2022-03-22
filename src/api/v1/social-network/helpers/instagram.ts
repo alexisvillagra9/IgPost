@@ -1,4 +1,5 @@
 import { Page } from "puppeteer";
+import { createCacheImage } from "../../files/helpers/file";
 import { getPostByHashtagService } from "../services/instagram";
 import { openBrowser } from "./browser";
 
@@ -45,13 +46,20 @@ export const getPostByHashtagHelper = async (hashtag: string) => {
     const rawPost = await getPostByHashtagService(hashtag);
     const postEdges: any[] =
       rawPost.graphql.hashtag.edge_hashtag_to_media.edges;
-    const post = postEdges.map((edge: any) => {
+    const pPosts = postEdges.map(async (edge: any) => {
+      const display_url = await createCacheImage(
+        edge.node.display_url,
+        edge.node.id
+      ); //createe cache images
+
       return {
-        display_url: edge.node.display_url,
+        display_url,
         body: edge.node.edge_media_to_caption.edges[0].node.text,
+        id: edge.node.id,
       };
     });
-    return post;
+    const posts = await Promise.all(pPosts);
+    return posts;
   } catch (error) {
     throw error;
   }
