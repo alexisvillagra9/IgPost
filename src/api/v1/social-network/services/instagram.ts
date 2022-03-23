@@ -8,6 +8,7 @@ export const getPostByHashtagService = async (hashtag: string) => {
     const { data: post } = response;
     return post;
   } catch (error) {
+    console.log("Error en axios", error);
     throw error;
   }
 };
