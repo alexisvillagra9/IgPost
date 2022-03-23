@@ -3,7 +3,8 @@ import axios from "axios";
 export const getPostByHashtagService = async (hashtag: string) => {
   try {
     const response = await axios.get(
-      `https://www.instagram.com/explore/tags/${hashtag}/?__a=1`
+      `https://www.instagram.com/explore/tags/${hashtag}/?__a=1`,
+      { proxy: false }
     );
     const { data: post } = response;
     return post;
