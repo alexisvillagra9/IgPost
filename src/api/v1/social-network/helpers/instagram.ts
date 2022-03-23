@@ -46,7 +46,7 @@ export const getPostByHashtagHelper = async (hashtag: string) => {
     const rawPost = await getPostByHashtagService(hashtag);
     // console.log(JSON.stringify(rawPost))
     const postEdges: any[] =
-      rawPost.graphql.hashtag.edge_hashtag_to_media.edges;
+      rawPost?.graphql?.hashtag?.edge_hashtag_to_media?.edges || [];
     const pPosts = postEdges.map(async (edge: any) => {
       const display_url = await createCacheImage(
         edge.node.display_url,
